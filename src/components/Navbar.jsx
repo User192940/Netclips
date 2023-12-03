@@ -9,7 +9,9 @@ const Navbar = () => {
   const [drawer, openDrawer] = useState()
 
   const handleLogout = async () => {
-    openDrawer(!drawer)
+    if(drawer){
+      openDrawer(!drawer);
+    }
     try{
       await logOut()
       navigate('/index.html')
