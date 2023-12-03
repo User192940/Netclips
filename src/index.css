@@ -56,3 +56,55 @@ body{
       -webkit-transition: all .2s linear; /* Safari 和 Chrome */
       -o-transition: all .2s linear; /* Opera */
   }
+  .nav-main-menu-toggle svg * {
+    transform-box: fill-box;
+} 
+.contact .container{
+    justify-items: inherit;
+}
+button{
+    background-color: transparent;
+}
+.nav-main-menu-toggle rect:nth-child(1) {
+    transition: all 1s linear;
+    transform-origin: center;
+}
+
+.nav-main-menu-toggle rect:nth-child(2) {
+    transition: all 1s linear;
+    transform-origin: center;
+}
+
+.nav-main-menu-toggle rect:nth-child(3) {
+    transition: all 1s linear;
+    transform-origin: center;
+}
+#nav-main-menu{
+  transform: translateX(-100%);
+  transition: all .2s ease-in;
+  position: fixed;
+  width: 60vw;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  visibility: hidden;
+  height: calc(100vh - 4rem);
+  top: 4rem;
+  left: 0;
+  flex-direction: column;
+  background-color: black;
+  color: white;
+}
+#nav-main-menu.show-drawer {
+  visibility: visible;
+  transform: translateX(0);
+  transition: all .2s ease-in;
+  overflow-y: hidden;
+}
+#nav-main-menu li{
+  padding: .5rem 22px;
+}
+#nav-main-menu ul {
+  height: calc(100vh - 4rem);
+}
