@@ -1,10 +1,36 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import requests from '../Requests';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { UserAuth } from '../context/AuthContext';
+import {db} from '../firebase'
+import {arrayUnion, doc, updateDoc} from 'firebase/firestore'
 
 
 const Preview = ({ movie, trailorKey, setOpenPlayer, open}) => {
   const [trailerLink, setTrailerLink] = useState('');
+  const [like, setLike] = useState(false);
+    const [saved, setSaved] = useState(false);
+    const {user} = UserAuth();
+    const movieID = doc(db, 'users', `${user?.email}`)
+    let item = movie;
+    const saveShow = async () => {
+      if(user?.email){
+        setLike(!like)
+        setSaved(true)
+        await updateDoc(movieID, {
+          savedShows: arrayUnion({
+            id: item.id,
+            title: item.title,
+            img: item.backdrop_path,
+            overview: item.overview,
+            release_date: item.release_date
+          })
+        })
+      } else{
+        alert('Please login to save a movie')
+      }
+    }
       const truncateStr = (str, num) => {
         if(str?.length > num) {
             return str.slice(0, num) + '...';
@@ -41,7 +67,10 @@ const Preview = ({ movie, trailorKey, setOpenPlayer, open}) => {
             <div id='movie-container' className='w-full aspect-video'>
             <iframe id="trailer" className='aspect-video' src={trailerLink} frameBorder="0" allow="autoplay" allowFullScreen></iframe>
             </div>
-            <h1 className='text-white text-3xl md:text-5xl px-2'>{movie?.title}</h1>
+            <div className='flex justify-between'>
+              <h1 className='text-white text-3xl md:text-5xl px-2'>{movie?.title}</h1>
+              <p className='flex items-center p-2' onClick={(e) => e.stopPropagation()}>{like ? (<FaHeart onClick={saveShow} className='text-gray-300 w-8 h-8'/>) : (<FaRegHeart onClick={saveShow} className='text-gray-300 w-8 h-8'/>)}</p>
+            </div>
             <p className='text-gray-400 text-sm px-2'>Released: {movie?.release_date}</p>
             <p className='w-full px-2 md:max-w-[70%] lg:max-w-[70%] xl:max-w-[70%] text-gray-200'>
                 {movie?.overview}
