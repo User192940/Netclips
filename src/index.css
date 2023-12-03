@@ -63,7 +63,6 @@ body{
     justify-items: inherit;
 }
 button{
-    border:0;
     background-color: transparent;
 }
 .nav-main-menu-toggle rect:nth-child(1) {
@@ -82,7 +81,7 @@ button{
 }
 #nav-main-menu{
   transform: translateX(-100%);
-  transition: all 1s ease-in;
+  transition: all .2s ease-in;
   position: fixed;
   width: 60vw;
   margin: 0;
@@ -100,9 +99,12 @@ button{
 #nav-main-menu.show-drawer {
   visibility: visible;
   transform: translateX(0);
-  transition: all 1s ease-in;
+  transition: all .2s ease-in;
   overflow-y: hidden;
 }
 #nav-main-menu li{
-  padding: .5rem 1rem;
+  padding: .5rem 22px;
+}
+#nav-main-menu ul {
+  height: calc(100vh - 4rem);
 }
