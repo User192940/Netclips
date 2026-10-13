@@ -8,8 +8,8 @@ const Drawer = ({drawer, openDrawer, handleLogout, user}) => {
         <ul className='flex flex-col'>
           <li>
             <Link onClick={() => {openDrawer(!drawer)}}
-              className={`${(location.pathname === '/index.html') ? "text-white" : "text-gray-400"} text-lg font-bold cursor-pointer`}
-              to="/index.html"
+              className={`${(location.pathname === '/') ? "text-white" : "text-gray-400"} text-lg font-bold cursor-pointer`}
+              to="/"
             >
               Home
             </Link>

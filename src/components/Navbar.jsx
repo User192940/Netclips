@@ -14,7 +14,7 @@ const Navbar = () => {
     }
     try{
       await logOut()
-      navigate('/index.html')
+      navigate('/')
     } catch (err) {
       console.log(err)
     }
@@ -35,7 +35,7 @@ const Navbar = () => {
         </svg>
       </button>
       <Drawer drawer={drawer} openDrawer={openDrawer} handleLogout={handleLogout} user={user}/>
-      <Link to="/index.html" onClick={() => {if(drawer){openDrawer(!drawer)}}}> 
+      <Link to="/" onClick={() => {if(drawer){openDrawer(!drawer)}}}> 
         <h1 className="text-red-600 text-4xl font-bold cursor-pointer">
           NETCLIPS
         </h1>
