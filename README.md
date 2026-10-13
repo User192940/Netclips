@@ -27,7 +27,7 @@ src/
 3. Copy `.env.example` to `.env.local` and fill in:
    - a TMDB API Read Access Token (themoviedb.org > Settings > API)
    - your Firebase web app config (enable Email/Password sign-in and Firestore)
-4. `yarn start` and open http://localhost:3000/index.html
+4. `yarn start` and open http://localhost:3000
 
 `yarn build` makes a production build in `build/`.
 
