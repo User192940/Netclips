@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Main from '../components/Main'
 import Row from '../components/Row'
-import requests from '../Requests'
+import requests, { tmdbHeaders } from '../Requests'
 import axios from 'axios'
 import Preview from '../components/Preview'
 
@@ -18,7 +18,7 @@ function isOfficial(result) {
   return result.type === 'Trailer';
 }
   useEffect(() => {
-      axios.get(requests.requestPopular).then((response) => {
+      axios.get(requests.requestPopular, { headers: tmdbHeaders }).then((response) => {
           const fetchedMovies = response.data.results;
           setMovies(fetchedMovies);
           const randomMovie = fetchedMovies[Math.floor(Math.random() * fetchedMovies.length)];

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import Movie from './Movie';
+import { tmdbHeaders } from '../Requests';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
 const Row = ({title, fetchURL, rowID, onPlay, setMovie}) => {
     const [movies, setMovies] = useState([])
 
     useEffect(() => {
-        axios.get(fetchURL).then((response) => {
+        axios.get(fetchURL, { headers: tmdbHeaders }).then((response) => {
             setMovies(response.data.results)
         })
     }, [fetchURL])
