@@ -13,7 +13,7 @@ const Login = () => {
         setError('')
         try{
             await signIn(email, password)
-            navigate('/index.html')
+            navigate('/')
         } catch (err) {
             console.log(err)
             setError(err.message)

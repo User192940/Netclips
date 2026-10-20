@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import { AuthContextProvider, UserAuth } from "./context/AuthContext";
@@ -19,7 +19,8 @@ function App({}) {
     <AuthContextProvider>
       <Navbar />
       <Routes>
-        <Route path='/index.html' element={<Home/>} />
+        <Route path='/' element={<Home/>} />
+        <Route path='/index.html' element={<Navigate to='/' replace/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/signup' element={<Signup/>} />
         <Route path='/account' element={<ProtectedRoute><Account/></ProtectedRoute>} />
